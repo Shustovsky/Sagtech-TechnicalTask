@@ -1,0 +1,59 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10%;
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+}
+
+.result {
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+
+.currency-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .currency-item {
+        padding: 3px;
+        margin-bottom: 10px;
+        border: 1px solid;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(50%);
+        }
+    }
+
+    .currency {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .rate {
+        color: green;
+    }
+}
+
+@media (max-width: 650px) {
+    .main form {
+        flex-direction: column;
+    }
+}
