@@ -1,4 +1,10 @@
-import { createSlice, createAsyncThunk, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createAsyncThunk,
+  PayloadAction,
+  SliceCaseReducers,
+  AnyAction,
+} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export interface CurrencyState {
@@ -34,12 +40,12 @@ export const currenciesSlice = createSlice<CurrencyState, SliceCaseReducers<Curr
     });
 
     builder.addCase(fulfilledAction, (state, action: PayloadAction<string[]>) => {
-      state.loading = false;
       state.item = action.payload;
+      state.loading = false;
     });
 
-    builder.addCase(rejectedAction, (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+    builder.addCase(rejectedAction, (state, action: AnyAction) => {
+      state.error = action.error.message + '. Please reload the page.';
       state.loading = false;
     });
   },
