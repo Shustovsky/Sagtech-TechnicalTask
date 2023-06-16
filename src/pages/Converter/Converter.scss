@@ -4,6 +4,7 @@
     align-items: center;
     gap: 10px;
     margin: 0 10%;
+    flex-grow: 1;
 
     form {
         display: flex;
@@ -14,6 +15,12 @@
 
     label {
         font-weight: bold;
+    }
+
+    .select-container {
+        display: flex;
+        gap: 5px;
+        padding: 2% 0;
     }
 }
 
@@ -36,6 +43,9 @@
         border: 1px solid;
         border-radius: 5px;
         cursor: pointer;
+        width: 120px;
+        text-overflow: ellipsis;
+        display: flex;
 
         &:hover {
             filter: brightness(50%);
