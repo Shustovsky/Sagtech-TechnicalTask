@@ -5,11 +5,11 @@ import { fetchCurrencies } from '../store/currenciesSlice';
 
 export function useCurrencies() {
   const dispatch = useAppDispatch();
-  const { item, loading } = useAppSelector(getCurrenciesSelector);
+  const { item, loading, error } = useAppSelector(getCurrenciesSelector);
 
   useEffect(() => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
 
-  return { item, loading };
+  return { item, loading, error };
 }
