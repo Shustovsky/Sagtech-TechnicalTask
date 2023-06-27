@@ -11,6 +11,7 @@ export function Converter() {
   const fromCurrencyRef = useRef<string>('');
   const toCurrencyRef = useRef<string>('');
   const [conversionResult, setConversionResult] = useState<string>('');
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const inputValue = e.target.value;
@@ -29,6 +30,7 @@ export function Converter() {
 
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitted(true);
 
     if (!amount) {
       setConversionResult('Please fill amount field');
@@ -61,7 +63,10 @@ export function Converter() {
     fromCurrencyRef.current = item.length > 0 ? item[0] : '';
     toCurrencyRef.current = item.length > 0 ? item[0] : '';
     setConversionResult('');
+    setSubmitted(false);
   };
+
+  const validationError = !amount && submitted ? 'Please fill amount field' : '';
 
   return (
     <main className="main">
@@ -74,7 +79,7 @@ export function Converter() {
               value={amount}
               onChange={handleAmountChange}
               placeholder="Amount"
-              className={!amount ? 'error' : ''}
+              className={validationError ? 'error' : ''}
             />
             <CurrencySelect title={'From'} values={item} onChange={handleFromCurrencyChange} />
             <CurrencySelect title={'To'} values={item} onChange={handleToCurrencyChange} />
