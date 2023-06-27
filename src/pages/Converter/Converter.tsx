@@ -45,7 +45,7 @@ export function Converter() {
 
     try {
       const response = await axios.get(
-        `!${import.meta.env.VITE_API_URL}/convert?from=${fromCurrencyRef.current}&to=${
+        `${import.meta.env.VITE_API_URL}/convert?from=${fromCurrencyRef.current}&to=${
           toCurrencyRef.current
         }&amount=${amount}&api_key=${import.meta.env.VITE_ACCESS_KEY}`
       );
